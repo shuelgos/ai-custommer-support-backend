@@ -1,18 +1,13 @@
 const fastify=require ('fastify')({logger:true});
+const healthRoutes=require('./routes/health.routes');
 
-//routes 
-fastify.get('/health',async(request,reply) => {
-    return{
-        status:'ok',
-        uptime:proccess.uptime()
-    };
-});
+fastify.register(healthRoutes);
 
 //Usamos async porque levantar un servidor es un proceso asincrono
 const start= async()=>{
     try{
-        await fastify.listen({port:3000})
-        console.log('Server running')
+        await fastify.listen({port:3000});
+        console.log('Server running in port 3000');
        
     } catch (err) {
         

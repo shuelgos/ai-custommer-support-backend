@@ -1,0 +1,12 @@
+async function healthRoutes(fastify,options){
+    
+    fastify.get('/health',async(request,reply)=>{
+        return {
+            status:'ok',
+            uptime:process.uptime()
+        };
+    });
+
+};
+
+module.exports= healthRoutes;
