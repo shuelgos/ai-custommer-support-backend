@@ -1,7 +1,14 @@
 const fastify=require ('fastify')({logger:true});
-const healthRoutes=require('./routes/health.routes');
+const healthRoutes=require('./routes/health.routes.js');
+const versionRoutes=require('./routes/version.routes.js');
+const usersRoutes=require('./routes/users.routes.js');
+const companiesRoutes=require('./routes/companies.routes.js');
 
-fastify.register(healthRoutes);
+fastify.register(usersRoutes);
+fastify.register(healthRoutes); //->No error
+fastify.register(versionRoutes);
+fastify.register(companiesRoutes);
+
 
 //Usamos async porque levantar un servidor es un proceso asincrono
 const start= async()=>{
@@ -12,7 +19,7 @@ const start= async()=>{
     } catch (err) {
         
         fastify.log.error(err);
-        proccess.exit(1);
+        process.exit(1);
     }
 
 }
