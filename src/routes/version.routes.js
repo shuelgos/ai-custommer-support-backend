@@ -7,6 +7,6 @@ async function versionRoutes(fastify,options){
             "enviroment":"development"
         };
     });
-};
+};  
 
 module.exports=versionRoutes;
